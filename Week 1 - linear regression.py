@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from torch.autograd import Variable
 
 def makedata(numdatapoints):
-    x = np.linspace(-1, 1, numdatapoints)
+    x = np.linspace(-10, 10, numdatapoints)
 
     coeffs = [0.5, 5, 7, 5]
 
@@ -69,8 +69,9 @@ lr = 0.5
 powers = [1, 2, 3]
 
 features = makefeatures(powers)
+scaled, avg, r = scale_features(features)
 
-datain = Variable(torch.Tensor(features.T))
+datain = Variable(torch.Tensor(scaled.T))
 labels = Variable(torch.Tensor(labels.T))
 
 mymodel = LinearModel()

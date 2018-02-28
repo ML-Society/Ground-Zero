@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 from torch.autograd import Variable
 
 def makedata(numdatapoints):
-    x = np.linspace(-10, 10, numdatapoints)
+    x = np.linspace(-1, 1, numdatapoints)
 
-    coeffs = [0.5, 5, 7, 5]
+    coeffs = [2, -30, 0.5, 5]
 
     y = np.polyval(coeffs, x) + 2 * np.random.rand(numdatapoints)
 
@@ -66,12 +66,11 @@ class LinearModel(torch.nn.Module):
 epochs = 100
 lr = 0.5
 
-powers = [1, 2, 3]
+powers = [2, 3]
 
 features = makefeatures(powers)
-scaled, avg, r = scale_features(features)
 
-datain = Variable(torch.Tensor(scaled.T))
+datain = Variable(torch.Tensor(features.T))
 labels = Variable(torch.Tensor(labels.T))
 
 mymodel = LinearModel()

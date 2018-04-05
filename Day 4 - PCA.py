@@ -102,7 +102,7 @@ def k_means(x, y, centroids=3):
             assignment = np.argmin(norms)
             print('difference', 'norms, assignment')
             print(difference, norms, assignment)
-            assignments[datapoint] = assignment #assignment_dict[assignment]
+            assignments[datapoint] = assignment_dict[assignment]
 
         for c in range(centroids):
             positions[c] = np.mean(x[assignments == c], axis=0)
